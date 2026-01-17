@@ -67,29 +67,144 @@
       </ul>
     </div>
 
-    <section class="rate-card">
-      <div class="rate-card-item">
-  <img src="images/rate-card/home-service-family.jpg" class="rate-card-img" alt="Home service family" />
+
+  <section class="rate-section">
+  <h2 class="section-title">Our Rates</h2>
+
+  <!-- Filters -->
+  <div class="rate-filters">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="basic">Basic</button>
+  <button class="filter-btn" data-filter="standard">Standard</button>
+  <button class="filter-btn" data-filter="premium">Premium</button>
 </div>
 
-      <div class="rate-card-item">
-        <img src="images/rate-card/home-service-personal.jpg" class="rate-card-img" alt="home service-personal" />
-      </div>
-      <div class="rate-card-item">
-        <img src="images/rate-card/pre-wedding-shoot.jpg" class="rate-card-img" alt="pre-wedding-shoot" />
-      </div>
-      <div class="rate-card-item">
-        <img src="images/rate-card/studio-family-shoot.jpg" class="rate-card-img" alt="studio family shoot" />
-      </div>
-      <div class="rate-card-item">
-        <img src="images/rate-card/studio-portrait.jpg" class="rate-card-img" alt="studio portrait" />
-      </div>
-      <div class="rate-card-item">
-        <img src="images/rate-card/wedding-package.jpg" class="rate-card-img" alt="wedding package" />
-      </div>
-    </section>
 
-    
+  <!-- Rate Cards -->
+  <div class="rate-grid">
+
+  <!-- Home Service Family Shoot -->
+  <div class="rate-card-item" data-rate="home_family" data-tier="basic">
+    <h3>Home Service – Family Shoot</h3>
+    <p class="price">₦60,000</p>
+    <ul>
+      <li>1 hour session</li>
+      <li>15 edited pictures</li>
+      <li>Indoor only</li>
+    </ul>
+    <button class="cta">View Details</button>
+  </div>
+
+  <div class="rate-card-item" data-rate="home_family" data-tier="standard">
+    <h3>Home Service – Family Shoot</h3>
+    <p class="price">₦100,000</p>
+    <ul>
+      <li>2–3 hours session</li>
+      <li>20 edited pictures</li>
+      <li>Indoor + Outdoor</li>
+    </ul>
+    <button class="cta">View Details</button>
+  </div>
+
+  <div class="rate-card-item" data-rate="home_family" data-tier="premium">
+    <h3>Home Service – Family Shoot</h3>
+    <p class="price">₦150,000</p>
+    <ul>
+      <li>2–4 hours session</li>
+      <li>30+ edited pictures</li>
+      <li>Mini photobook</li>
+    </ul>
+    <button class="cta">View Details</button>
+  </div>
+
+  <!-- Studio Personal Shoot -->
+  <div class="rate-card-item" data-rate="studio_personal" data-tier="basic">
+    <h3>Studio – Personal Shoot</h3>
+    <p class="price">₦15,000</p>
+    <ul>
+      <li>30 minutes</li>
+      <li>1 outfit</li>
+      <li>5 edited pictures</li>
+    </ul>
+    <button class="cta">View Details</button>
+  </div>
+
+  <div class="rate-card-item" data-rate="studio_personal" data-tier="standard">
+    <h3>Studio – Personal Shoot</h3>
+    <p class="price">₦25,000</p>
+    <ul>
+      <li>1 hour</li>
+      <li>2 outfits</li>
+      <li>10 edited pictures</li>
+    </ul>
+    <button class="cta">View Details</button>
+  </div>
+
+  <div class="rate-card-item" data-rate="studio_personal" data-tier="premium">
+    <h3>Studio – Personal Shoot</h3>
+    <p class="price">₦50,000</p>
+    <ul>
+      <li>2 hours</li>
+      <li>4 outfits</li>
+      <li>16×24 frame</li>
+    </ul>
+    <button class="cta">View Details</button>
+  </div>
+
+  <!-- Wedding Package -->
+  <div class="rate-card-item" data-rate="wedding" data-tier="basic">
+    <h3>Wedding Package</h3>
+    <p class="price">₦300,000</p>
+    <ul>
+      <li>1 photographer</li>
+      <li>150 edited images</li>
+      <li>Online gallery</li>
+    </ul>
+    <button class="cta">View Details</button>
+  </div>
+
+  <div class="rate-card-item" data-rate="wedding" data-tier="standard">
+    <h3>Wedding Package</h3>
+    <p class="price">₦500,000</p>
+    <ul>
+      <li>Pre-wedding shoot</li>
+      <li>300 edited images</li>
+      <li>30-page album</li>
+    </ul>
+    <button class="cta">View Details</button>
+  </div>
+
+  <div class="rate-card-item" data-rate="wedding" data-tier="premium">
+    <h3>Wedding Package</h3>
+    <p class="price">₦800,000</p>
+    <ul>
+      <li>2 photographers</li>
+      <li>500+ images</li>
+      <li>Luxury album</li>
+    </ul>
+    <button class="cta">View Details</button>
+  </div>
+
+</div>
+
+</section>
+
+
+<div class="rate-modal" id="rateModal">
+  <div class="rate-modal-content">
+    <button class="modal-close" id="closeRate">✕</button>
+    <h3 id="rateTitle"></h3>
+    <p class="modal-price" id="ratePrice"></p>
+    <ul id="rateDetails"></ul>
+
+    <a id="whatsappBook" class="whatsapp-btn" target="_blank">
+      📲 Book on WhatsApp
+    </a>
+  </div>
+</div>
+
+<div class="page-loader" id="pageLoader"></div>
+
 
 
     <!-- ===== Footer ===== -->
