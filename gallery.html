@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slingshot Studios</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <p id="businessStatus">Loading status...</p>
+
+      <div class="top-socials horizontal-socials">
+        <a href="https://wa.me/+2348164025181" target="_blank"
+          ><img
+            src="icons/call_chat_mobile_whatsapp_whatsapp logo_icon_black.png"
+            alt="whatsapp"
+        /></a>
+        <a href="https://www.instagram.com/slingshot_ng/" target="_blank"
+          ><img src="icons/instagram_black.png" alt="instagram"
+        /></a>
+        <a href="https://twitter.com/Slingshot_ng" target="_blank"
+          ><img
+            src="icons/5305170_bird_social media_social network_tweet_twitter_icon.svg"
+            alt="twitter"
+        /></a>
+        <a
+          href="https://web.facebook.com/slingshotphotography.ng"
+          target="_blank"
+          ><img
+            src="icons/5305153_fb_facebook_facebook logo_icon.svg"
+            alt="facebook"
+        /></a>
+      </div>
+    </div>
+
+    <!-- ===== Navigation ===== -->
+    <header class="main-header">
+      <div class="logo">
+        <img src="images/logo.png" alt="Slingshot Studios" />
+      </div>
+
+      <nav class="main-nav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="rateCard.html">Rate Card</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="rental.html">Rent Equipment</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="aboutUs.html">About</a></li>
+  </ul>
+</nav>
+
+      <div class="menu-toggle" id="menuToggle">☰</div>
+    </header>
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-close" id="closeMenu">✕</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="rateCard.html">Rate Card</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="rental.html">Rent Equipment</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="aboutUs.html">About</a></li>
+      </ul>
+    </div>
+
+    <!-- ===== Studio Categories ===== -->
+    <section class="image-gallery gallery-categories">
+  <div class="card" data-gallery="studio">Studio Portrait</div>
+  <div class="card" data-gallery="wedding">Weddings</div>
+  <div class="card" data-gallery="corporate">Corporate Headshot</div>
+  <div class="card" data-gallery="outdoor">Outdoor Shoot</div>
+  <div class="card" data-gallery="event">Events</div>
+</section>
+
+<section class="gallery-view" id="galleryView">
+  <button class="gallery-back" id="closeGallery">← Back</button>
+  <h2 id="galleryTitle"></h2>
+
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+
+<div class="page-loader" id="pageLoader"></div>
+
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="closeLightbox">✕</span>
+  <img id="lightboxImg" />
+</div>
+
+
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <p>
+            Slingshot Studios is a portrait photography studio based in Ibadan,
+            Nigeria, delivering high‑quality portraits for weddings, families,
+            and corporate events.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="studioPortrait.html">Studio Portrait</a></li>
+            <li><a href="weddings.html">Weddings</a></li>
+            
+        </div>
+
+        <div class="footer-links">
+          <ul>            
+            <li><a href="coporateHeadshot.html">Headshot</a></li>
+            <li><a href="outdoorShoot.html">Outdoor Shoot</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="rateCard.html">Rate Card</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="rental.html">Rent Equipment</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="aboutUs.html">About</a></li>
+        </ul>
+      </div>
+
+      <p class="copyright">© 2025 Slingshot Studios. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
