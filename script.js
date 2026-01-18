@@ -108,62 +108,148 @@ document.addEventListener("DOMContentLoaded", () => {
 const WHATSAPP_NUMBER = "2348164025181";
 
 const rateData = {
-  studio_basic: {
-    title: "Studio Portrait – Basic",
-    price: "₦15,000",
-    details: ["30 minutes session", "1 outfit", "5 edited pictures"],
-  },
-  studio_standard: {
-    title: "Studio Portrait – Standard",
-    price: "₦25,000",
-    details: ["1 hour session", "2 outfits", "10 edited pictures"],
-  },
-  studio_premium: {
-    title: "Studio Portrait – Premium",
-    price: "₦40,000",
-    details: ["2 hours session", "4 outfits", "20 edited pictures"],
-  },
-  family_home: {
-    title: "Home Service Family Shoot",
-    price: "₦60,000+",
-    details: [
-      "1 hour session",
-      "15 edited pictures",
-      "Indoor only",
-      "1 outfit",
+  studio_personal: {
+    title: "Studio – Personal Shoot",
+    tiers: [
+      {
+        name: "Basic",
+        price: "₦15,000",
+        details: ["30 mins session", "1 outfit", "5 edited photos"],
+      },
+      {
+        name: "Standard",
+        price: "₦25,000",
+        details: ["1 hour session", "2 outfits", "10 edited photos"],
+      },
+      {
+        name: "Premium",
+        price: "₦40,000",
+        details: ["2 hours", "4 outfits", "20 edited photos"],
+      },
     ],
   },
-  wedding_basic: {
-    title: "Wedding Package – Basic",
-    price: "₦300,000",
-    details: [
-      "1 professional photographer",
-      "150 edited pictures",
-      "Online gallery",
-      "20-page album",
+
+  studio_family: {
+    title: "Studio – Family Shoot",
+    tiers: [
+      {
+        name: "Basic",
+        price: "₦25,000",
+        details: ["1 hour", "1 outfit", "8 edited photos"],
+      },
+      {
+        name: "Standard",
+        price: "₦40,000",
+        details: ["2 hours", "2 outfits", "15 edited photos"],
+      },
+      {
+        name: "Premium",
+        price: "₦60,000",
+        details: ["3 hours", "Unlimited outfits", "25 edited photos"],
+      },
     ],
   },
-  wedding_premium: {
-    title: "Wedding Package – Premium",
-    price: "₦800,000",
-    details: [
-      "2 photographers",
-      "500+ edited pictures",
-      "Luxury photo album",
-      "USB with images",
+
+  home_personal: {
+    title: "Home Service – Personal Shoot",
+    tiers: [
+      {
+        name: "Basic",
+        price: "₦40,000",
+        details: ["Indoor only", "1 outfit", "8 edited photos"],
+      },
+      {
+        name: "Standard",
+        price: "₦60,000",
+        details: ["Indoor + Outdoor", "2 outfits", "15 edited photos"],
+      },
+      {
+        name: "Premium",
+        price: "₦90,000",
+        details: [
+          "Multiple locations",
+          "Unlimited outfits",
+          "25 edited photos",
+        ],
+      },
     ],
   },
+
+  prewedding: {
+    title: "Pre-Wedding Shoot",
+    tiers: [
+      {
+        name: "Basic",
+        price: "₦100,000",
+        details: ["Single location", "2 outfits", "10 edited photos"],
+      },
+      {
+        name: "Standard",
+        price: "₦150,000",
+        details: ["2 locations", "3 outfits", "20 edited photos"],
+      },
+      {
+        name: "Premium",
+        price: "₦250,000",
+        details: [
+          "Multiple locations",
+          "Unlimited outfits",
+          "40 edited photos",
+        ],
+      },
+    ],
+  },
+};
+
+// MODAL LOGIC
+const modal = document.getElementById("rateModal");
+const titleEl = document.getElementById("rateTitle");
+const tierGrid = document.getElementById("tierGrid");
+
+document.querySelectorAll(".rate-card-item").forEach((card) => {
+  card.addEventListener("click", () => {
+    const data = rateData[card.dataset.rate];
+    if (!data) return;
+
+    titleEl.textContent = data.title;
+    tierGrid.innerHTML = "";
+
+    data.tiers.forEach((tier) => {
+      const message = `Hello Slingshot Studios 👋
+I want to book the ${tier.name} package for ${data.title}.
+Price: ${tier.price}`;
+
+      const tierEl = document.createElement("div");
+      tierEl.className = "tier-card";
+      tierEl.innerHTML = `
+        <h4>${tier.name}</h4>
+        <p class="tier-price">${tier.price}</p>
+        <ul>${tier.details.map((d) => `<li>${d}</li>`).join("")}</ul>
+        <a class="whatsapp-btn"
+          target="_blank"
+          href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+        message
+      )}">
+          Book ${tier.name}
+        </a>
+      `;
+      tierGrid.appendChild(tierEl);
+    });
+
+    modal.classList.add("active");
+  });
+});
+
+document.getElementById("closeRate").onclick = () =>
+  modal.classList.remove("active");
+
+modal.onclick = (e) => {
+  if (e.target === modal) modal.classList.remove("active");
 };
 
 /*************************************************
  * RATE MODAL LOGIC
  *************************************************/
-const modal = document.getElementById("rateModal");
-const titleEl = document.getElementById("rateTitle");
-const priceEl = document.getElementById("ratePrice");
-const detailsEl = document.getElementById("rateDetails");
-const whatsappBtn = document.getElementById("whatsappBook");
-const closeRateBtn = document.getElementById("closeRate");
 
 document.querySelectorAll(".rate-card-item").forEach((card) => {
   card.addEventListener("click", () => {
@@ -212,12 +298,13 @@ document.querySelectorAll(".filter-btn").forEach((btn) => {
     document
       .querySelectorAll(".filter-btn")
       .forEach((b) => b.classList.remove("active"));
+
     btn.classList.add("active");
 
     const filter = btn.dataset.filter;
 
     document.querySelectorAll(".rate-card-item").forEach((card) => {
-      if (filter === "all" || card.dataset.tier === filter) {
+      if (filter === "all" || card.dataset.category === filter) {
         card.style.display = "block";
       } else {
         card.style.display = "none";
@@ -226,13 +313,24 @@ document.querySelectorAll(".filter-btn").forEach((btn) => {
   });
 });
 
-document.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", (e) => {
-    if (link.target === "_blank") return;
-    e.preventDefault();
-    document.getElementById("pageLoader").classList.add("active");
-    setTimeout(() => {
-      window.location.href = link.href;
-    }, 300);
+const pageLoader = document.getElementById("pageLoader");
+
+if (pageLoader) {
+  document.querySelectorAll("a[href]").forEach((link) => {
+    if (
+      link.target === "_blank" ||
+      link.href.startsWith("javascript:") ||
+      link.href.includes("#")
+    ) {
+      return;
+    }
+
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      pageLoader.classList.add("active");
+      setTimeout(() => {
+        window.location.href = link.href;
+      }, 300);
+    });
   });
-});
+}

@@ -41,16 +41,17 @@
       </div>
 
       <nav class="main-nav">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="html">Gallery</a></li>
-          <li><a href="#rate">Rate Card</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#rent">Rent Equipment</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-      </nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="rateCard.html">Rate Card</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="rental.html">Rent Equipment</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="aboutUs.html">About</a></li>
+  </ul>
+</nav>
+
 
       <div class="menu-toggle" id="menuToggle">☰</div>
     </header>
@@ -59,11 +60,11 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="#rate">Rate Card</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#rent">Rent Equipment</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="rateCard.html">Rate Card</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="rental.html">Rent Equipment</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="aboutUs.html">About</a></li>
       </ul>
     </div>
     
@@ -77,8 +78,22 @@
         </p>
       </div>
 
-
       </section>
+
+      <div class="rate-modal" id="rateModal">
+  <div class="rate-modal-content">
+    <button class="modal-close" id="closeRate">✕</button>
+    <h3 id="rateTitle"></h3>
+    <p class="modal-price" id="ratePrice"></p>
+    <ul id="rateDetails"></ul>
+
+    <a id="whatsappBook" class="whatsapp-btn" target="_blank">
+      📲 Book on WhatsApp
+    </a>
+  </div>
+</div>
+
+<div class="page-loader" id="pageLoader"></div>
 
     <!-- ===== Footer ===== -->
     <footer class="footer">
