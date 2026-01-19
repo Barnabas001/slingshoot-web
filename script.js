@@ -522,7 +522,7 @@ lightbox.addEventListener("touchend", (e) => {
   }
 });
 
-// RENDER GALLERY (THIS IS THE ONLY innerHTML)
+// RENDER GALLERY
 function renderGallery(images) {
   galleryGrid.innerHTML = images
     .map(
@@ -544,3 +544,4 @@ function renderGallery(images) {
     });
   });
 }
+
