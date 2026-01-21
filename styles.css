@@ -55,7 +55,11 @@ p {
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
   color: #111;
   background: #fff;
   /* opacity: 0;
@@ -118,7 +122,10 @@ ul {
   top: 38px;
   z-index: 1500;
 
-  transition: height 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition:
+    height 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
 .main-header.shrink {
@@ -176,12 +183,23 @@ ul {
 
 .hero-image {
   flex: 1;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 
 .hero-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* prevents cropping */
+}
+
+.desktop-image {
+  display: block;
+}
+
+.mobile-image {
+  display: none;
 }
 
 /* MOBILE */
@@ -344,7 +362,9 @@ ul {
 }
 
 .card {
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
   cursor: pointer;
 }
 
@@ -360,6 +380,7 @@ ul {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
 }
 
 .card {
@@ -445,7 +466,9 @@ ul {
   padding: 40px 28px;
   text-align: center;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   cursor: pointer;
 }
 
@@ -582,7 +605,9 @@ ul {
   padding: 28px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   cursor: pointer;
 }
 
@@ -814,6 +839,13 @@ ul {
     display: none;
   }
 
+  .mobile-image {
+    display: block;
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+  }
+
   .hero-image img {
     height: 100%;
     width: auto;
@@ -936,10 +968,15 @@ ul {
     gap: 30px;
   }
 
+  .footer-links {
+    display: none;
+  }
+
   .footer-nav ul {
-    flex-direction: column;
+    /* flex-direction: column;
     gap: 14px;
-    align-items: center;
+    align-items: center; */
+    display: none;
   }
 }
 
@@ -959,4 +996,132 @@ ul {
   .section-title {
     font-size: 28px;
   }
+}
+
+/* ===== GALLERY VIEW ===== */
+.gallery-view {
+  display: none;
+  padding: 60px 40px;
+}
+
+.gallery-view.active {
+  display: block;
+}
+
+.gallery-back {
+  background: none;
+  border: none;
+  font-size: 18px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.gallery-categories.hidden {
+  display: none;
+}
+
+.gallery-view {
+  display: none;
+}
+
+.gallery-view.active {
+  display: block;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid img {
+    height: 180px;
+  }
+}
+
+/* ===== MASONRY GALLERY ===== */
+/* .gallery-grid {
+  column-count: 3;
+  column-gap: 16px;
+} */
+
+.gallery-grid img {
+  width: 100%;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+
+  /* filter: blur(12px); */
+  transform: scale(1.02);
+  transition:
+    filter 0.4s ease,
+    transform 0.4s ease;
+}
+
+.gallery-grid img.loaded {
+  filter: blur(0);
+  transform: scale(1);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .gallery-grid {
+    column-count: 2;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .gallery-grid {
+    column-count: 1;
+  }
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
 }
