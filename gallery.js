@@ -63,3 +63,50 @@ backBtn.addEventListener("click", () => {
   galleryView.style.display = "none";
   categories.style.display = "grid";
 });
+
+// quick update
+galleryCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    const key = card.dataset.gallery;
+    const images = galleryData[key];
+    if (!images) return;
+
+    galleryTitle.textContent = card.textContent;
+    renderGallery(images);
+
+    document.body.classList.add("gallery-open");
+    galleryView.classList.add("active");
+
+    window.scrollTo(0, 0);
+  });
+});
+
+closeGallery.addEventListener("click", () => {
+  galleryView.classList.remove("active");
+  document.body.classList.remove("gallery-open");
+});
+
+let touchStartY = 0;
+let touchEndY = 0;
+
+galleryView.addEventListener("touchstart", (e) => {
+  touchStartY = e.touches[0].clientY;
+});
+
+galleryView.addEventListener("touchmove", (e) => {
+  touchEndY = e.touches[0].clientY;
+});
+
+galleryView.addEventListener("touchend", () => {
+  const diff = touchEndY - touchStartY;
+
+  if (diff > 120) {
+    closeGalleryView();
+  }
+});
+
+function closeGalleryView() {
+  galleryView.classList.remove("active");
+  categoriesSection.classList.remove("hidden");
+  history.pushState({}, "", window.location.pathname);
+}
