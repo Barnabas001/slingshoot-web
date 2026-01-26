@@ -957,9 +957,6 @@ ul {
   }
 
   .footer-nav ul {
-    /* flex-direction: column;
-    gap: 14px;
-    align-items: center; */
     display: none;
   }
 }
@@ -1076,11 +1073,6 @@ body.gallery-open {
 }
 
 /* ===== MASONRY GALLERY ===== */
-/* .gallery-grid {
-  column-count: 3;
-  column-gap: 16px;
-} */
-
 .gallery-grid img {
   width: 100%;
   margin-bottom: 16px;
@@ -1150,11 +1142,6 @@ body.gallery-open {
 }
 
 /* ===== Rent Page ===== */
-/* .rent-page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-} */
-
 .rental-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

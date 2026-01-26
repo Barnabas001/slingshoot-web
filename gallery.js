@@ -1,6 +1,4 @@
-/*************************************************
- * GALLERY DATA
- *************************************************/
+//GALLERY DATA
 const galleryData = {
   studio: [
     "images/gallery/studio/Slingshot_Studios_03.jpg",
@@ -26,9 +24,6 @@ const galleryData = {
   ],
 };
 
-/*************************************************
- * DOM ELEMENTS
- *************************************************/
 const galleryCards = document.querySelectorAll(".gallery-categories .card");
 const categoriesSection = document.getElementById("galleryCategories");
 const galleryView = document.getElementById("galleryView");
@@ -40,9 +35,7 @@ const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
 const closeLightbox = document.getElementById("closeLightbox");
 
-/*************************************************
- * OPEN / CLOSE GALLERY
- *************************************************/
+//OPEN / CLOSE GALLERY
 function openGallery(key, title) {
   const images = galleryData[key];
   if (!images) return;
@@ -63,9 +56,7 @@ function closeGallery() {
   history.pushState({}, "", window.location.pathname);
 }
 
-/*************************************************
- * CATEGORY CLICK
- *************************************************/
+//CATEGORY CLICK
 galleryCards.forEach((card) => {
   card.addEventListener("click", () => {
     openGallery(card.dataset.gallery, card.textContent);
@@ -74,9 +65,7 @@ galleryCards.forEach((card) => {
 
 closeGalleryBtn.addEventListener("click", closeGallery);
 
-/*************************************************
- * URL SYNC (BACK BUTTON SUPPORT)
- *************************************************/
+//URL SYNC (BACK BUTTON SUPPORT)
 window.addEventListener("popstate", () => {
   galleryView.classList.remove("active");
   categoriesSection.classList.remove("hidden");
@@ -90,9 +79,7 @@ if (initialGallery && galleryData[initialGallery]) {
   openGallery(initialGallery, card?.textContent || "");
 }
 
-/*************************************************
- * RENDER GALLERY (ONLY PLACE innerHTML IS USED)
- *************************************************/
+// RENDER GALLERY
 function renderGallery(images) {
   galleryGrid.innerHTML = images
     .map(
@@ -115,9 +102,6 @@ function renderGallery(images) {
   });
 }
 
-/*************************************************
- * LAZY LOAD + BLUR UP
- *************************************************/
 function setupLazyImages() {
   const imgs = document.querySelectorAll(".gallery-grid img");
 
@@ -139,9 +123,7 @@ function setupLazyImages() {
   imgs.forEach((img) => observer.observe(img));
 }
 
-/*************************************************
- * LIGHTBOX + SWIPE LEFT / RIGHT
- *************************************************/
+//LIGHTBOX + SWIPE LEFT / RIGHT
 let currentImages = [];
 let currentIndex = 0;
 let startX = 0;
@@ -179,9 +161,7 @@ lightbox.addEventListener("touchend", (e) => {
   }
 });
 
-/*************************************************
- * SWIPE DOWN TO CLOSE GALLERY (MOBILE)
- *************************************************/
+//SWIPE DOWN TO CLOSE GALLERY (MOBILE)
 let startY = 0;
 let endY = 0;
 
