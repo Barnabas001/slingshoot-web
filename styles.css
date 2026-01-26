@@ -62,8 +62,6 @@ body {
     sans-serif;
   color: #111;
   background: #fff;
-  /* opacity: 0;
-  transition: opacity 0.45s ease; */
 }
 img {
   max-width: 100%;
@@ -191,7 +189,7 @@ ul {
 .hero-image img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* prevents cropping */
+  object-fit: contain;
 }
 
 .desktop-image {
@@ -314,7 +312,6 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* gap: 12px; */
 }
 
 .footer a {
@@ -497,19 +494,6 @@ ul {
 }
 
 /* ===== Rate Modal ===== */
-/* .rate-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-} */
-
 .rate-modal.active {
   opacity: 1;
   pointer-events: auto;
