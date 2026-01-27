@@ -1,110 +1,4 @@
-/*************************************************
- * BUSINESS STATUS (TOP BAR)
- *************************************************/
-function updateBusinessStatus() {
-  const statusEl = document.getElementById("businessStatus");
-  if (!statusEl) return;
-
-  const now = new Date();
-  const day = now.getDay();
-  const currentMinutes = now.getHours() * 60 + now.getMinutes();
-
-  let openTime, closeTime;
-
-  // Sunday: 2PM – 6PM
-  if (day === 0) {
-    openTime = 14 * 60;
-    closeTime = 18 * 60;
-  } else {
-    // Mon–Sat: 8AM – 6PM
-    openTime = 8 * 60;
-    closeTime = 18 * 60;
-  }
-
-  const formatTime = (mins) => {
-    const h = Math.floor(mins / 60);
-    const m = mins % 60;
-    const suffix = h >= 12 ? "PM" : "AM";
-    const hour12 = h % 12 || 12;
-    return `${hour12}:${m.toString().padStart(2, "0")} ${suffix}`;
-  };
-
-  if (currentMinutes >= openTime && currentMinutes < closeTime) {
-    const minsLeft = closeTime - currentMinutes;
-
-    if (minsLeft <= 30) {
-      statusEl.textContent = `🟠 Closing soon • ${minsLeft} mins left`;
-      statusEl.style.color = "#fb923c";
-    } else {
-      statusEl.textContent = `🟢 Currently Open • Closes ${formatTime(
-        closeTime
-      )}`;
-      statusEl.style.color = "#22c55e";
-    }
-  } else if (currentMinutes >= closeTime) {
-    statusEl.textContent = `🔴 Closed for the day`;
-    statusEl.style.color = "#ef4444";
-  } else {
-    const minsToOpen = openTime - currentMinutes;
-    const h = Math.floor(minsToOpen / 60);
-    const m = minsToOpen % 60;
-
-    statusEl.textContent = `🟡 Yet to open • Opens in ${h}h ${m}m`;
-    statusEl.style.color = "#facc15";
-  }
-}
-
-updateBusinessStatus();
-setInterval(updateBusinessStatus, 60000);
-
-/*************************************************
- * STICKY SHRINKING HEADER
- *************************************************/
-const header = document.querySelector(".main-header");
-window.addEventListener("scroll", () => {
-  if (header) {
-    header.classList.toggle("shrink", window.scrollY > 60);
-  }
-});
-
-/*************************************************
- * SCROLL REVEAL ANIMATIONS
- *************************************************/
-const revealEls = document.querySelectorAll(
-  ".card, .rate-card-item, .hero-text, .footer"
-);
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add("reveal");
-    });
-  },
-  { threshold: 0.15 }
-);
-revealEls.forEach((el) => revealObserver.observe(el));
-
-/*************************************************
- * MOBILE MENU
- *************************************************/
-document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn = document.querySelector(".menu-toggle");
-  const mobileNav = document.querySelector(".mobile-nav");
-  const closeBtn = document.querySelector(".mobile-close");
-
-  if (!menuBtn || !mobileNav || !closeBtn) return;
-
-  menuBtn.addEventListener("click", () => {
-    mobileNav.classList.add("active");
-  });
-
-  closeBtn.addEventListener("click", () => {
-    mobileNav.classList.remove("active");
-  });
-});
-
-/*************************************************
- * RATE DATA (SIMPLIFIED FROM YOUR SAMPLES)
- *************************************************/
+//RATE DATA (SIMPLIFIED FROM YOUR SAMPLES)
 const WHATSAPP_NUMBER = "2348164025181";
 
 const rateData = {
@@ -322,8 +216,8 @@ Price: ${tier.price}`;
         <a class="whatsapp-btn"
           target="_blank"
           href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-        message
-      )}">
+            message,
+          )}">
           Book ${tier.name}
         </a>
       `;
@@ -341,9 +235,7 @@ modal.onclick = (e) => {
   if (e.target === modal) modal.classList.remove("active");
 };
 
-/*************************************************
- * RATE MODAL LOGIC
- *************************************************/
+//RATE MODAL LOGIC
 
 document.querySelectorAll(".rate-card-item").forEach((card) => {
   card.addEventListener("click", () => {
@@ -369,7 +261,7 @@ Time: ${time}
     `.trim();
 
     whatsappBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-      message
+      message,
     )}`;
 
     modal.classList.add("active");
@@ -384,9 +276,6 @@ modal?.addEventListener("click", (e) => {
   if (e.target === modal) modal.classList.remove("active");
 });
 
-/*************************************************
- * PRICE FILTERS
- *************************************************/
 document.querySelectorAll(".filter-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     document
@@ -429,71 +318,85 @@ if (pageLoader) {
   });
 }
 
-/*************************************************
- * GALLERY DATA
- *************************************************/
-// const galleryData = {
-//   studio: [
-//     "images/gallery/studio/studio1.jpg",
-//     // "images/gallery/studio2.jpg",
-//     // "images/gallery/studio3.jpg",
-//   ],
-//   wedding: [
-//     "images/gallery/wedding/Weddings - Slingshot Studios.jpg",
-//     // "images/gallery/wedding2.jpg",
-//     // "images/gallery/wedding3.jpg",
-//   ],
-//   corporate: ["images/gallery/corporate1.jpg", "images/gallery/corporate2.jpg"],
-//   outdoor: ["images/gallery/outdoor1.jpg", "images/gallery/outdoor2.jpg"],
-//   event: ["images/gallery/event1.jpg", "images/gallery/event2.jpg"],
-// };
-
+//GALLERY DATA
 const galleryData = {
-  studio: ["images/gallery/studio/Slingshot_Studios_03.jpg"],
+  studio: [
+    "images/gallery/studio/Slingshot_Studios_03.jpg",
+    "images/gallery/studio/Slingshot_Studios_03.jpg",
+    ,
+    "images/gallery/studio/Slingshot_Studios_03.jpg",
+  ],
 
-  wedding: ["images/gallery/wedding/Weddings - Slingshot Studios.jpg"],
+  wedding: [
+    "images/gallery/wedding/Weddings - Slingshot Studios.jpg",
+    "images/gallery/wedding/Weddings - Slingshot Studios.jpg",
+    "images/gallery/wedding/Weddings - Slingshot Studios.jpg",
+  ],
 
-  corporate: ["images/gallery/corporate/Slingshot_Studios_01.jpg"],
+  corporate: [
+    "images/gallery/corporate/Slingshot_Studios_01.jpg",
+    "images/gallery/corporate/Slingshot_Studios_01.jpg",
+    ,
+    "images/gallery/corporate/Slingshot_Studios_01.jpg",
+  ],
 
-  outdoor: ["images/gallery/outdoor/Outdoor Shoot - Slingshot Studios.jpg"],
+  outdoor: [
+    "images/gallery/outdoor/Outdoor Shoot - Slingshot Studios.jpg",
+    "images/gallery/outdoor/Outdoor Shoot - Slingshot Studios.jpg",
+    ,
+    "images/gallery/outdoor/Outdoor Shoot - Slingshot Studios.jpg",
+  ],
 
   event: [
     "images/gallery/event/event1.jpg",
     "images/gallery/event/Events - Slingshot Studios.jpg",
+    "images/gallery/event/Events - Slingshot Studios.jpg",
   ],
 };
 
+// GALLERY LOGIC
 const galleryCards = document.querySelectorAll(".gallery-categories .card");
+const categoriesSection = document.getElementById("galleryCategories");
 const galleryView = document.getElementById("galleryView");
 const galleryGrid = document.getElementById("galleryGrid");
 const galleryTitle = document.getElementById("galleryTitle");
 const closeGallery = document.getElementById("closeGallery");
 
-/*************************************************
- * CATEGORY CLICK → OPEN GALLERY
- *************************************************/
+// CATEGORY CLICK → OPEN GALLERY
+
 galleryCards.forEach((card) => {
   card.addEventListener("click", () => {
     const key = card.dataset.gallery;
     const images = galleryData[key];
+
     if (!images) return;
 
     galleryTitle.textContent = card.textContent;
-
     renderGallery(images);
 
+    // 🔥 THIS IS THE "OPEN FOLDER" EFFECT
+    categoriesSection.classList.add("hidden");
     galleryView.classList.add("active");
+
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+});
+
+closeGallery.addEventListener("click", () => {
+  galleryView.classList.remove("active");
+  categoriesSection.classList.remove("hidden");
+});
+
+closeGallery.addEventListener("click", () => {
+  galleryView.classList.remove("active");
+  categoriesSection.style.display = "grid";
 });
 
 closeGallery?.addEventListener("click", () => {
   galleryView.classList.remove("active");
 });
 
-/*************************************************
- * LAZY LOAD + BLUR UP
- *************************************************/
+//LAZY LOAD + BLUR UP
 function setupLazyImages() {
   const imgs = document.querySelectorAll(".gallery-grid img");
 
@@ -509,15 +412,13 @@ function setupLazyImages() {
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.15 },
   );
 
   imgs.forEach((img) => observer.observe(img));
 }
 
-/*************************************************
- * LIGHTBOX + SWIPE
- *************************************************/
+// LIGHTBOX + SWIPE
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightboxImg");
 const closeLightbox = document.getElementById("closeLightbox");
@@ -562,9 +463,7 @@ lightbox.addEventListener("touchend", (e) => {
   }
 });
 
-/*************************************************
- * RENDER GALLERY (THIS IS THE ONLY innerHTML)
- *************************************************/
+// RENDER GALLERY (THIS IS THE ONLY innerHTML)
 function renderGallery(images) {
   galleryGrid.innerHTML = images
     .map(
@@ -574,7 +473,7 @@ function renderGallery(images) {
           data-index="${i}"
           alt=""
         />
-      `
+      `,
     )
     .join("");
 
