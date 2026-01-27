@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slingshot Studios</title>
+    <style>
+      :root {
+--primary: #0d6efd;
+--accent: #f4d03f;
+--bg: #f7f9fc;
+--card: #ffffff;
+--text: #1f2937;
+}
+
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+background: var(--bg);
+color: var(--text);
+padding: 2rem 1rem;
+}
+
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+}
+
+
+header {
+margin-bottom: 1.5rem;
+}
+
+
+header h1 {
+font-size: 2rem;
+color: var(--primary);
+}
+
+header p {
+margin-top: 0.5rem;
+opacity: 0.85;
+}
+
+
+/* Filters */
+.filters {
+display: flex;
+gap: 0.75rem;
+margin: 1.5rem 0;
+flex-wrap: wrap;
+}
+
+
+.filter-btn {
+padding: 0.5rem 1rem;
+border-radius: 999px;
+border: 1px solid var(--primary);
+background: transparent;
+color: var(--primary);
+cursor: pointer;
+font-weight: 600;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+background: var(--primary);
+color: #fff;
+}
+
+@media (max-width: 480px) {
+header h1 { font-size: 1.6rem; }
+.rental-card img { height: 180px; }
+}
+</style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <p id="businessStatus">Loading status...</p>
+
+      <div class="top-socials horizontal-socials">
+        <a href="https://wa.me/+2348164025181" target="_blank"
+          ><img
+            src="icons/call_chat_mobile_whatsapp_whatsapp logo_icon_black.png"
+            alt="whatsapp"
+        /></a>
+        <a href="https://www.instagram.com/slingshot_ng/" target="_blank"
+          ><img src="icons/instagram_black.png" alt="instagram"
+        /></a>
+        <a href="https://twitter.com/Slingshot_ng" target="_blank"
+          ><img
+            src="icons/5305170_bird_social media_social network_tweet_twitter_icon.svg"
+            alt="twitter"
+        /></a>
+        <a
+          href="https://web.facebook.com/slingshotphotography.ng"
+          target="_blank"
+          ><img
+            src="icons/5305153_fb_facebook_facebook logo_icon.svg"
+            alt="facebook"
+        /></a>
+      </div>
+    </div>
+
+    <!-- ===== Navigation ===== -->
+    <header class="main-header">
+      <div class="logo">
+        <a href="index.html">          
+          <img src="images/logo.png" alt="Slingshot Studios" />
+        </a>
+      </div>
+
+      <nav class="main-nav">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="rateCard.html">Rate Card</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="rental.html">Rent Equipment</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="aboutUs.html">About</a></li>
+  </ul>
+</nav>
+
+
+      <div class="menu-toggle" id="menuToggle">☰</div>
+    </header>
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-close" id="closeMenu">✕</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="rateCard.html">Rate Card</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="rental.html">Rent Equipment</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="aboutUs.html">About</a></li>
+      </ul>
+    </div>
+    
+    <div class="container">
+<header>
+<h1>Equipment Rentals</h1>
+<p>Browse available equipment for rent</p>
+</header>
+
+<input type="text" id="searchInput" placeholder="Search equipment..." style="width:100%;padding:0.75rem;border-radius:12px;border:1px solid #ccc;margin:1rem 0" />
+
+<div class="filters" id="filters"></div>
+<section class="rental-grid" id="rentalGrid"></section>
+</div>
+
+
+<!-- Modal -->
+<div class="modal-rent" id="modal">
+<div class="modal-content-rent">
+<h3 id="modalTitle"></h3>
+<input type="text" placeholder="Your Name" />
+<input type="tel" placeholder="Phone Number" />
+<div class="modal-actions-rent">
+<button class="rent-btn" id="whatsappBtn">WhatsApp</button>
+<button class="close-rent-btn" onclick="closeRentModal()">Close</button>
+</div>
+</div>
+</div>
+
+<div class="page-loader" id="pageLoader"></div>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <p>
+            Slingshot Studios is a portrait photography studio based in Ibadan,
+            Nigeria, delivering high‑quality portraits for weddings, families,
+            and corporate events.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="gallery.html">Studio Portrait</a></li>
+            <li><a href="gallery.html">Weddings</a></li>
+            
+        </div>
+
+        <div class="footer-links">
+          <ul>            
+            <li><a href="gallery.html">Headshot</a></li>
+            <li><a href="gallery.html">Outdoor Shoot</a></li>
+            <li><a href="gallery.html">Events</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="rateCard.html">Rate Card</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="rental.html">Rent Equipment</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="aboutUs.html">About</a></li>
+        </ul>
+      </div>
+
+      <p class="copyright">© 2025 Slingshot Studios. All rights reserved.</p>
+    </footer>
+
+    <script src="header.js"></script>
+    <script src="rentals.js"></script>
+  </body>
+</html>
