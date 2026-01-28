@@ -19,7 +19,7 @@ let equipmentData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [
     id: 2,
     name: "Tripod",
     category: "Cameras",
-    image: "images/rentals/tripod.jpeg",
+    image: "images/rentals/Tripod.jpeg",
   },
   {
     id: 3,
