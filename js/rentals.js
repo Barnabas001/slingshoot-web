@@ -46,7 +46,7 @@ const rentModal = document.getElementById("modal");
 const modalTitle = document.getElementById("modalTitle");
 const whatsappBtn = document.getElementById("whatsappBtn");
 
-/* ================= ADMIN UI ================= */
+// ADMIN UI
 const adminWrapper = document.createElement("div");
 adminWrapper.innerHTML = `
 <div id="adminLogin" style="margin-top:2rem">
@@ -86,7 +86,7 @@ function logoutAdmin() {
   renderItems(equipmentData);
 }
 
-/* ================= RENDER ================= */
+// RENDER FILTERS AND ITEMS
 function renderFilters() {
   const categories = ["All", ...new Set(equipmentData.map((e) => e.category))];
   filters.innerHTML = categories
@@ -123,7 +123,7 @@ ${
     .join("");
 }
 
-/* ================= ACTIONS ================= */
+// ACTIONS
 function filterCategory(category, btn) {
   document
     .querySelectorAll(".filter-btn")

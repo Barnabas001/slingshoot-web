@@ -55,41 +55,59 @@ function updateBusinessStatus() {
 updateBusinessStatus();
 setInterval(updateBusinessStatus, 60000);
 
-//STICKY SHRINKING HEADER
+// Mobile menu
+
+//MOBILE NAV TOGGLE
+const menuToggle = document.getElementById("menuToggle");
+const mobileNav = document.getElementById("mobileNav");
+const closeMenu = document.getElementById("closeMenu");
+const mobileLinks = mobileNav?.querySelectorAll("a");
+
+// Toggle menu (open ↔ close)
+function toggleMenu() {
+  mobileNav.classList.toggle("active");
+  document.body.classList.toggle("nav-open");
+}
+
+// Close menu
+function closeMobileMenu() {
+  mobileNav.classList.remove("active");
+  document.body.classList.remove("nav-open");
+}
+
+// ☰ Click
+menuToggle?.addEventListener("click", toggleMenu);
+
+// ✕ Click
+closeMenu?.addEventListener("click", closeMobileMenu);
+
+// Close on link click
+mobileLinks?.forEach((link) => {
+  link.addEventListener("click", closeMobileMenu);
+});
+
+// Header shrink
 const header = document.querySelector(".main-header");
 window.addEventListener("scroll", () => {
-  if (header) {
-    header.classList.toggle("shrink", window.scrollY > 60);
-  }
+  header?.classList.toggle("shrink", window.scrollY > 40);
 });
 
-//SCROLL REVEAL ANIMATIONS
-const revealEls = document.querySelectorAll(
-  ".card, .rate-card-item, .hero-text, .footer",
-);
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add("reveal");
+// Page loader
+const pageLoader = document.getElementById("pageLoader");
+
+if (pageLoader) {
+  document.querySelectorAll("a[href]").forEach((link) => {
+    if (
+      link.target === "_blank" ||
+      link.href.includes("#") ||
+      link.href.startsWith("javascript:")
+    )
+      return;
+
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      pageLoader.classList.add("active");
+      setTimeout(() => (window.location.href = link.href), 300);
     });
-  },
-  { threshold: 0.15 },
-);
-revealEls.forEach((el) => revealObserver.observe(el));
-
-//MOBILE MENU
-document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn = document.querySelector(".menu-toggle");
-  const mobileNav = document.querySelector(".mobile-nav");
-  const closeBtn = document.querySelector(".mobile-close");
-
-  if (!menuBtn || !mobileNav || !closeBtn) return;
-
-  menuBtn.addEventListener("click", () => {
-    mobileNav.classList.add("active");
   });
-
-  closeBtn.addEventListener("click", () => {
-    mobileNav.classList.remove("active");
-  });
-});
+}
