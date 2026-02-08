@@ -923,7 +923,7 @@ body.nav-open {
 
   .hero-image img {
     width: 50%;
-    height: 50%;
+    height: 100%;
     object-fit: cover;
   }
 
