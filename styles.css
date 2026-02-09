@@ -61,15 +61,6 @@ p {
   }
 }
 
-body {
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
-  color: #111;
-  background: #fff;
-}
 img {
   max-width: 100%;
   display: block;
@@ -197,14 +188,6 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.desktop-image {
-  display: block;
-}
-
-.mobile-image {
-  display: none;
 }
 
 /* MOBILE */
@@ -831,17 +814,6 @@ body.nav-open {
     align-items: flex-end;
   }
 
-  .desktop-image {
-    display: none;
-  }
-
-  .mobile-image {
-    display: block;
-    width: auto;
-    height: 100%;
-    object-fit: contain;
-  }
-
   .hero-image img {
     height: 100%;
     width: auto;
@@ -852,11 +824,6 @@ body.nav-open {
     padding: 0 20px;
     margin: 60px auto;
   }
-
-  /* .rate-card-img {
-    max-width: 100%;
-    margin-bottom: 20px;
-  } */
 
   @media (max-width: 768px) {
     .image-gallery {
