@@ -8,7 +8,7 @@ if (!galleryRoot || !categoriesSection) {
   //DATA
   const galleryData = {
     studio: [
-<<<<<<< HEAD
+
       "images/gallery/studio/Slingshot_Studios_04.jpg",
       "images/gallery/studio/Slingshot_Studios_03.jpg",
       "images/gallery/studio/Slingshot_Studios_05.jpg",
@@ -71,23 +71,6 @@ if (!galleryRoot || !categoriesSection) {
       "images/gallery/outdoor/Slingshot-7349.jpg",
       "images/gallery/outdoor/Slingshot-7352.jpg",
       "images/gallery/outdoor/Slingshot-7363.jpg",
-=======
-      "images/gallery/studio/Slingshot_Studios_03.jpg",
-      "images/gallery/studio/Slingshot_Studios_03.jpg",
-      "images/gallery/studio/Slingshot_Studios_03.jpg",
-    ],
-    wedding: [
-      "images/gallery/wedding/Weddings - Slingshot Studios.jpg",
-      "images/gallery/wedding/Weddings - Slingshot Studios.jpg",
-    ],
-    corporate: [
-      "images/gallery/corporate/Slingshot_Studios_01.jpg",
-      "images/gallery/corporate/Slingshot_Studios_01.jpg",
-    ],
-    outdoor: [
-      "images/gallery/outdoor/Outdoor Shoot - Slingshot Studios.jpg",
-      "images/gallery/outdoor/Outdoor Shoot - Slingshot Studios.jpg",
->>>>>>> f78d371b469bf63e6738c24ed93f788de9694f44
     ],
     event: [
       "images/gallery/event/event1.jpg",
